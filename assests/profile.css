@@ -1,0 +1,28 @@
+/* .body{
+    background-color: rgb(204, 130, 33);
+} */
+.topContainer{
+    background-image: url(FaceRecognition.png);
+    height: 40vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.image {
+ 
+
+  width: 100%;
+
+}
+.image img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 20rem;
+    margin: 0 auto;
+    /* align-items: center; */
+    display: block;
+    margin-top: -76px;
+}
+.name{
+    text-align: center;
+}
