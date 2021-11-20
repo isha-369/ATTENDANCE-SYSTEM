@@ -1,0 +1,65 @@
+body
+{
+    background-image: url("../images/register.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.containerP
+{
+    /* position: absolute; */
+    /* left: 30%;
+    right: 30%; */
+ display: block;
+ margin: 100px auto;
+ align-items: center;
+    height: 540px;
+    width: 450px;
+    background-color: white;
+    border-radius: 0.5rem;
+    border: 2px solid #17bebe;
+}
+.signup-content{
+    padding: 0px 0px 0px 2rem;
+    display: flex;
+    flex-direction: column;
+}
+.heading{
+    text-align: center;
+    color: #17bebe;
+    margin: 3px 3px 8px;
+    padding: 12px;
+   
+}
+input
+{
+    /* border: 2px solid white; */
+    /* border-bottom: 2px solid black; */
+    /* border: 2px solid white; */
+    /* border-bottom: 2px solid black; */
+    width: 93%;
+    border: 1px solid #ebebeb;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 55px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    padding: 6px 26px;
+    box-sizing: border-box;
+    font-size: 12px;
+    align-items: center;
+    font-weight: 500;
+    color: #222;
+    margin-bottom: 2.5rem;
+    
+}
+#files{
+    margin-bottom: -2rem;
+
+}
+.btnImages{
+    margin-left: 7rem;
+}
+input[type=submit]{
+margin-top:0.5rem;
+}

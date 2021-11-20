@@ -1,37 +1,49 @@
-const express=require('express');
-const app=express();
-const path=require('path');
-// const router=require('express').Router();
-const multer=require('fs');
-// const path=require('path');
-const PORT=4000;
-app.use(express.urlencoded({
-  extended:false
+const express = require('express');
+const cookieParser=require('cookie-parser');
+const session=require('express-session');
+const passport=require('passport');
+const passportLocal=require('./config/passport-local-strategy');
+const app = express();
+const port = 8000;
+const db = require('./config/mongoose');
+// const MongoStore=require('connect-mongo')(session);
+const MongoStore = require('connect-mongodb-session')(session);
+
+
+
+//reading through post request
+app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser());
+app.use(express.static('./assests'));
+
+// set up the view engine
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
+//mongo store is used to store session cookie in db
+app.use(session({
+    name:'iattend',
+    secret:'qwerty',
+    saveUninitialized:false,
+    resave:false,
+    cookie:{
+        maxAge:(1000 * 60 * 100)
+    }
 }));
-app.set('views',path.join(__dirname,'views'));
-app.use(express.static(path.join(__dirname,"assests")));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
-app.use(express.json());
 
 
-app.get('/',(req,res)=>{
-  console.log(res);
-  res.sendFile(path.join(__dirname,'views','index.htm'));
-}); 
+// app.use(passport.setAuthenticatedUser);
+app.use('/', require('./routes'));
 
+app.listen(port, function(err){
+    if (err){
+        console.log(`Error in running the server: ${err}`);
+    }
 
-app.get('/register.htm',(req,res)=>{
-  console.log(res);
-  res.sendFile(path.join(__dirname,'views','register.htm'));
-}); 
-app.get('/login.htm',(req,res)=>{
-  console.log(res);
-  res.sendFile(path.join(__dirname,'views','login.htm'));
-}); 
-
-app.get('/profile.htm',(req,res)=>{
-  console.log(res);
-  res.sendFile(path.join(__dirname,'views','profile.htm'));
-}); 
-app.listen(PORT,()=>console.log('server is starting on PORT',PORT));
+    console.log(`Server is running on port: ${port}`);
+});
